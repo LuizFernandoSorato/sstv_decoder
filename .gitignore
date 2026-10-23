@@ -1,0 +1,4 @@
+# Áudios de exemplo: grandes e regeneráveis com `npm run gerar-wav`
+exemplos/
+node_modules/
+*.log

@@ -1,0 +1,12 @@
+{
+  "name": "decodificador-sstv",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Decodificador SSTV leve que roda no navegador",
+  "type": "module",
+  "scripts": {
+    "servir": "npx --yes http-server -c-1 -p 8080 .",
+    "test": "node --test",
+    "gerar-wav": "node ferramentas/gerar-wav.js"
+  }
+}

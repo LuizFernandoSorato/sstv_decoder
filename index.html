@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decodificador SSTV</title>
+  <meta name="description" content="Decodifica imagens SSTV do microfone ou de arquivos de áudio, direto no aparelho.">
+  <meta name="theme-color" content="#0e1014">
+  <link rel="manifest" href="manifesto.webmanifest">
+  <link rel="icon" href="icones/icone-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icones/icone-apple-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SSTV">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="estilo.css">
+  <script type="module" src="src/interface.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Decodificador SSTV</h1>
+    <p>Microfone, entrada de linha ou arquivo de áudio. Tudo roda no seu navegador.</p>
+  </header>
+
+  <main>
+    <section class="painel controles" aria-label="Controles">
+      <div class="grupo">
+        <label class="botao" for="arquivo">Abrir arquivo…</label>
+        <input type="file" id="arquivo" accept="audio/*,.wav,.mp3,.ogg,.flac,.m4a,.aac,.opus" hidden>
+        <button type="button" id="botao-microfone" class="botao">Iniciar microfone</button>
+        <button type="button" id="botao-parar" class="botao secundario" disabled>Parar</button>
+      </div>
+      <div class="grupo">
+        <label>Entrada
+          <select id="dispositivo"><option value="">Padrão do sistema</option></select>
+        </label>
+        <label>Modo
+          <select id="modo"><option value="auto">Automático (VIS)</option></select>
+        </label>
+      </div>
+    </section>
+
+    <section class="painel estado" aria-live="polite">
+      <div id="status">Carregando… Se esta mensagem não mudar, sirva a pasta com <code>npm run servir</code> e abra http://localhost:8080 (abrir o arquivo direto do disco não funciona).</div>
+      <progress id="progresso" max="1" value="0"></progress>
+    </section>
+
+    <section class="area-imagem">
+      <div class="painel">
+        <canvas id="imagem" width="320" height="256"></canvas>
+        <div class="acoes">
+          <span id="info-imagem">Nenhuma imagem</span>
+          <button type="button" id="botao-salvar" class="botao secundario" disabled>Salvar PNG</button>
+        </div>
+      </div>
+      <div class="painel" id="painel-cascata" hidden>
+        <h2>Espectro da entrada</h2>
+        <div class="cascata">
+          <div id="marcas-cascata" class="marcas"></div>
+          <canvas id="cascata" width="340" height="220"></canvas>
+        </div>
+        <p class="dica">O sinal deve aparecer entre as marcas de 1500 e 2300 Hz, com os pulsos de sync em 1200 Hz.</p>
+      </div>
+    </section>
+
+    <section class="painel">
+      <h2>Imagens decodificadas</h2>
+      <div id="galeria" class="galeria"><p class="vazio">Nenhuma imagem ainda.</p></div>
+    </section>
+  </main>
+
+  <div id="soltar" class="soltar" hidden>Solte o arquivo de áudio para decodificar</div>
+</body>
+</html>
