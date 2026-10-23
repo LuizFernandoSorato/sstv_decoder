@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Decodificador SSTV leve que roda no navegador",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "servir": "npx --yes http-server -c-1 -p 8080 .",

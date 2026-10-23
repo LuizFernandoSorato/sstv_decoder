@@ -25,3 +25,7 @@ Sem dependências nem etapa de build: a pasta do projeto é o app. Para gerar á
 ```bash
 node ferramentas/gerar-wav.js robot-36 exemplos/robot-36.wav
 ```
+
+## Licença
+
+[MIT](LICENSE) © 2026 Luiz Fernando Sorato
